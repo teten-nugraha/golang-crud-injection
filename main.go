@@ -22,7 +22,7 @@ func main() {
 	db := initDB()
 	defer db.Close()
 
-	productAPI := initProductAPI(db)
+	productAPI := InitProductAPI(db)
 
 	r := gin.Default()
 
@@ -32,7 +32,7 @@ func main() {
 	r.PUT("/products/:id", productAPI.Update)
 	r.DELETE("/products/:id", productAPI.Delete)
 
-	err := r.Run()
+	err := r.Run(":9999")
 	if err != nil {
 		panic(err)
 	}
