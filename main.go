@@ -1,18 +1,14 @@
 package main
 
 import (
-	"github.com/teten-nugraha/golang-crud-injection/product"
-	"os"
-
+	"github.com/gin-gonic/gin"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"github.com/gin-gonic/gin"
-
-
+	"github.com/teten-nugraha/golang-crud-injection/product"
 )
 
 func initDB() *gorm.DB{
-	db, err := gorm.Open("mysql", os.Getenv("root:root@/golang_crud?charset=utf8&parseTime=True&loc=Local"))
+	db, err := gorm.Open("mysql", "root:root@tcp(127.0.0.1:3306)/golang_crud")
 	if err != nil {
 		panic(err)
 	}
